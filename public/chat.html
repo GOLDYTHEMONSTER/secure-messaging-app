@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Messaging App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="friends.html">Friends</a>
+        <button onclick="logout()">Logout</button>
+    </div>
+    <div class="container">
+        <h2>Chat with <span id="chatWithUser"></span></h2>
+        <div id="messages">
+            <!-- Dynamically filled -->
+        </div>
+        <form id="messageForm">
+            <textarea id="messageInput" placeholder="Type your message..." required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

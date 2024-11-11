@@ -1,0 +1,50 @@
+<!-- send-message.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Message</title>
+</head>
+<body>
+    <h1>Send Message</h1>
+    <form id="sendMessageForm">
+        <label for="sender">Sender:</label>
+        <input type="text" id="sender" name="sender" required><br><br>
+
+        <label for="receiver">Receiver:</label>
+        <input type="text" id="receiver" name="receiver" required><br><br>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea><br><br>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+    <script>
+        // Handle form submission
+        document.getElementById('sendMessageForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const sender = document.getElementById('sender').value;
+            const receiver = document.getElementById('receiver').value;
+            const message = document.getElementById('message').value;
+
+            // Make POST request to /send-message
+            const response = await fetch('http://localhost:3000/send-message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ sender, receiver, message })
+            });
+
+            if (response.ok) {
+                alert('Message sent successfully!');
+            } else {
+                alert('Error: ' + await response.text());
+            }
+        });
+    </script>
+</body>
+</html>
